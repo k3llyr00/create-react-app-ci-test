@@ -5,9 +5,14 @@ stages:
 image: node:14
 
 install:
+  stage: install
   script:
     - npm install
+  artifacts:
+    paths:
+      - node_modules
 
 test:
+  stage: test
   script:
     - npm test
