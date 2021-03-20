@@ -35,11 +35,11 @@ build:
 pages:
   stage: deploy
   script:
-    - rm -rf public
+    - rm -fr public
     - mv build public
-    artifacts:
-      paths:
-        - public
-    environment: 
-      name: pages
-      url: https://k3llyr00.gitlab.io/create-react-app-ci-test        
+  artifacts:
+    paths:
+      - public
+  environment:
+    name: pages
+    url: https://k3llyr00.gitlab.io/create-react-app-ci-test
