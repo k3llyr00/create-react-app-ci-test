@@ -1,0 +1,47 @@
+version: 2.1
+
+# workflows
+workflows:
+  version: 2.1
+  test-workflow:
+    jobs:
+      - test
+      - lint
+      - build:
+          requires:
+            - test
+            - lint
+
+# jobs
+jobs:
+  test:
+    docker:
+      - image: circleci/node
+    steps:
+      - checkout
+      - run: npm ci
+      - run: npm test
+
+  lint:
+    docker:
+      - image: circleci/node
+    steps:
+      - checkout
+      - run: npm ci
+      - run: npm run lint
+
+  build:
+    docker:
+      - image: circleci/node
+    steps:
+      - checkout
+      - run: npm ci
+      - run: npm run build
+      - run: |
+          rm -rf README.md package*.json src/ public/
+          mv build/* .
+          git config --global user.email "k3llyr00@gmail.com"
+          git config --global user.name "Kelly"
+          git add .
+          git commit -m 'deploy to github pages'
+          git push -f origin gh-pages
