@@ -1,6 +1,7 @@
 stages:
   - install
   - test
+  - build
 
 image: node:14
 
@@ -21,3 +22,8 @@ lint:
   stage: test
   script:
     - npm run lint
+
+build:
+  stage: build
+  script:
+    - npm run build
