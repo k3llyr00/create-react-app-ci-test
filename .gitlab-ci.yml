@@ -1,4 +1,13 @@
+stages:
+  - install
+  - test
+
 image: node:14
 
 install:
-  script: -npm install
+  script:
+    - npm install
+
+test:
+  script:
+    - npm test
