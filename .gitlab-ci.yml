@@ -37,6 +37,7 @@ pages:
   script:
     - rm -fr public
     - mv build public
+  when: manual
   artifacts:
     paths:
       - public
