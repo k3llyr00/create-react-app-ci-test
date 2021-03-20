@@ -16,3 +16,8 @@ test:
   stage: test
   script:
     - npm test
+
+lint:
+  stage: test
+  script:
+    - npm run lint
