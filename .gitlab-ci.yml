@@ -39,4 +39,7 @@ pages:
     - mv build public
     artifacts:
       paths:
-        - public      
+        - public
+    environment: 
+      name: pages
+      url: https://k3llyr00.gitlab.io/create-react-app-ci-test        
